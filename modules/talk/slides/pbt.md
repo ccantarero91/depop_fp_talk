@@ -9,7 +9,7 @@
 - I'm based on Madrid, Spain
 - Last two years on Depop as tech contractor
 - Goal: share my personal experience using Scala and functional programming (FP) on Depop.
-
+- A change
 
 Note:
 - Hello everyone, my name is Cristian Cantarero
