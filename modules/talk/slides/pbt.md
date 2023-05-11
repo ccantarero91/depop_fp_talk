@@ -127,7 +127,7 @@ Note:
 Example Scala 2
 ```scala
 case class SellerId(val userId: Int) extends AnyVal
-case class BuyeIdId(val userId: Int) extends AnyVal
+case class BuyerId(val userId: Int) extends AnyVal
 
 def pay(sellerId: SellerId): Unit = ???
 
@@ -137,8 +137,8 @@ def charge(buyerId: BuyerId): Unit = ???
 
 
 Note:
-- In Scala 3 is easier
-- There are also libreries to deal with this called `newtype`
+- In Scala 3 it's easier
+- There are also libraries to deal with this called `newtype`
 
 
 
@@ -155,9 +155,7 @@ def charge(buyerId: BuyerId): Unit = ???
 ```
 
 Note:
-- Here's an example of how I use opaque types to define a `SellerId` or `BuyerId` to model those cases.
-- Is really easy to mix Seller or buyer in our codebase and have an unexpected results.
-
+- In this case is simpler to use them
 
 
 
