@@ -31,7 +31,7 @@ lazy val talk =
     .enablePlugins(MdocPlugin, GitHubPagesPlugin)
     .settings(
       gitHubPagesOrgName  := "ccantarero91",
-      gitHubPagesRepoName := "fps-redis",
+      gitHubPagesRepoName := "depop_fp_talk",
       gitHubPagesSiteDir  := baseDirectory.value / "target" / "mdoc",
       mdocIn              := baseDirectory.value / "slides"
     )
