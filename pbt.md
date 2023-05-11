@@ -9,7 +9,6 @@
 - I'm based on Madrid, Spain
 - Last two years on Depop as tech contractor
 - Goal: share my personal experience using Scala and functional programming (FP) on Depop.
-- A change
 
 Note:
 - Hello everyone, my name is Cristian Cantarero
@@ -108,11 +107,9 @@ Note:
 
 
 
-## Opaque Types
-
-- Opaque Types
-  - have the same internal representation as another type,
-  - but they are distinct at compile-time.
+## Value Class / Opaque Types
+- Same internal representation as another type,
+- but they are distinct at compile-time.
 - Allowing strong typing
 - So you don't get confused passing parameters
 
@@ -125,22 +122,40 @@ Note:
 
 
 
-Example
+
+
+Example Scala 2
+```scala
+case class SellerId(val userId: Int) extends AnyVal
+case class BuyerId(val userId: Int) extends AnyVal
+
+def pay(sellerId: SellerId): Unit = ???
+
+def charge(buyerId: BuyerId): Unit = ???
+
+```
+
+
+Note:
+- In Scala 3 it's easier
+- There are also libraries to deal with this called `newtype`
+
+
+
+Example Scala 3
 ```scala
 opaque type SellerId = Int
 
 opaque type BuyerId = Int
 
-def pay(sellerId: SellerId)
+def pay(sellerId: SellerId): Unit = ???
 
-def charge(buyerId: BuyerId)
+def charge(buyerId: BuyerId): Unit = ???
 
 ```
 
 Note:
-- Here's an example of how I use opaque types to define a `SellerId` or `BuyerId` to model those cases.
-- Is really easy to mix Seller or buyer in our codebase and have an unexpected results.
-
+- In this case is simpler to use them
 
 
 
@@ -185,6 +200,9 @@ Note:
 
 ### Fuentes
 
-| Título                            | Autor   |
-|---------------------------------------------------------------------------------------|---------------|
-| [Practical FP in Scala](https://leanpub.com/pfp-scala)            | Gabriel Volpe |
+| Título                                                                                  | Autor         |
+|-----------------------------------------------------------------------------------------|---------------|
+| EitherT and OptionT                                                                     |               |
+| [Value classes](https://docs.scala-lang.org/overviews/core/value-classes.html)          | Scala         |
+ | [Opaque types Scala 3](https://docs.scala-lang.org/scala3/book/types-opaque-types.html) | Scala         |
+| [Practical FP in Scala](https://leanpub.com/pfp-scala)                                  | Gabriel Volpe |
