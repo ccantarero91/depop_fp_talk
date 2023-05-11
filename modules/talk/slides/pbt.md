@@ -107,11 +107,9 @@ Note:
 
 
 
-## Opaque Types
-
-- Opaque Types
-  - have the same internal representation as another type,
-  - but they are distinct at compile-time.
+## Value Class / Opaque Types
+- Same internal representation as another type,
+- but they are distinct at compile-time.
 - Allowing strong typing
 - So you don't get confused passing parameters
 
@@ -124,15 +122,35 @@ Note:
 
 
 
-Example
+
+
+Example Scala 2
+```scala
+case class SellerId(val userId: Int) extends AnyVal
+case class BuyeIdId(val userId: Int) extends AnyVal
+
+def pay(sellerId: SellerId): Unit = ???
+
+def charge(buyerId: BuyerId): Unit = ???
+
+```
+
+
+Note:
+- In Scala 3 is easier
+- There are also libreries to deal with this called `newtype`
+
+
+
+Example Scala 3
 ```scala
 opaque type SellerId = Int
 
 opaque type BuyerId = Int
 
-def pay(sellerId: SellerId)
+def pay(sellerId: SellerId): Unit = ???
 
-def charge(buyerId: BuyerId)
+def charge(buyerId: BuyerId): Unit = ???
 
 ```
 
@@ -184,6 +202,9 @@ Note:
 
 ### Fuentes
 
-| Título                            | Autor   |
-|---------------------------------------------------------------------------------------|---------------|
-| [Practical FP in Scala](https://leanpub.com/pfp-scala)            | Gabriel Volpe |
+| Título                                                                                  | Autor         |
+|-----------------------------------------------------------------------------------------|---------------|
+| EitherT and OptionT                                                                     |               |
+| [Value classes](https://docs.scala-lang.org/overviews/core/value-classes.html)          | Scala         |
+ | [Opaque types Scala 3](https://docs.scala-lang.org/scala3/book/types-opaque-types.html) | Scala         |
+| [Practical FP in Scala](https://leanpub.com/pfp-scala)                                  | Gabriel Volpe |
