@@ -4,8 +4,6 @@ import munit.ScalaCheckSuite
 import org.scalacheck._
 import org.scalacheck.Prop._
 
-import Adults._
-
 class AdultsSuite extends ScalaCheckSuite {
 
   val youngsGen = for {

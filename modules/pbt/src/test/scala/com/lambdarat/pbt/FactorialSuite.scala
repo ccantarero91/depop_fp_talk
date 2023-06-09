@@ -3,8 +3,6 @@ package com.lambdarat.pbt
 import munit.FunSuite
 import scala.util.Random
 
-import Factorial._
-
 class FactorialSuite extends FunSuite {
 
   test("Base case 0 must return 1") {

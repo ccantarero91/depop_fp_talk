@@ -4,7 +4,7 @@ import munit.ScalaCheckSuite
 import org.scalacheck._
 import org.scalacheck.Prop._
 
-import Sum.add
+import .add
 
 class SumSpec extends ScalaCheckSuite {
 

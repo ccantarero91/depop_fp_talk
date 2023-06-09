@@ -1,7 +1,6 @@
 package com.lambdarat.pbt
 
 import munit.FunSuite
-import Factorial._
 
 class AnotherFactorialSuite extends FunSuite {
 
