@@ -1,7 +1,7 @@
 ## Functional Programming in Scala by me :)
 ---
 ### Hi
-![Alt Text](https://media.giphy.com/media/D8j5ehgRFj5aYo3nTC/giphy.gif)
+![Alt Text](https://media.giphy.com/media/3o7budMRwZvNGJ3pyE/giphy.gif)
 
 Note:
 - Hello everyone
@@ -26,6 +26,8 @@ Note:
 
 
 ### What is Scala & FP?
+![Alt Text](https://media.giphy.com/media/rI9O6UXkCjvTG/giphy.gif)
+---
 - Scala combines object-oriented programming and functional programming
 - Functional programming relies on the use of pure, immutable, and side-effect-free functions
 - Goal: code more concise and feel more confident with it
@@ -52,7 +54,7 @@ Note:
 - Allows strong type!
 - No more passing parameters problems
 
-![Alt Text](https://media.giphy.com/media/Od0QRnzwRBYmDU3eEO/giphy.gif)
+![Alt Text](https://media.giphy.com/media/ej0Ay8fH6Y1Wg/giphy.gif)
 
 Note:
 - Another thing I liked about Scala was the ability to use opaque types
