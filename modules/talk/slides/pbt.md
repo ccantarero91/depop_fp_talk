@@ -101,29 +101,45 @@ Note:
 ---
 An example
 ```scala
-import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
-object Future extends App {
-
+object FutureII extends App {
   case class SellerId(userId: Int) extends AnyVal
+
   case class DepopProduct(id: Int) extends AnyVal
+
   case class PaymentId(id: Long) extends AnyVal
+
   case class Amount(q: Double) extends AnyVal
 
-  def getPrice(product: DepopProduct): Future[Amount] = ???
-  def getSeller(product: DepopProduct): Future[SellerId] = ???
-  def pay(sellerId: SellerId, amount: Amount): Future[PaymentId] = ???
-  def createRecordError(sellerId: SellerId, amount: Amount): Future[Unit] = ???
+  def getPrice(product: DepopProduct): Future[Amount] =
+    Future.successful(Amount(20))
+
+  def getSeller(product: DepopProduct): Future[SellerId] =
+    Future.successful(SellerId(10))
+
+  // def pay(sellerId: SellerId, amount: Amount): Future[PaymentId] = Future.successful(PaymentId(101L))
+  def pay(sellerId: SellerId, amount: Amount): Future[PaymentId] =
+    Future.failed(new Exception("No money"))
+
+  def createRecordError(sellerId: SellerId, amount: Amount): Future[Unit] =
+    Future.successful((println(s"created error record for $sellerId")))
 
   val product1: DepopProduct = DepopProduct(1)
-  for {
+  val result = for {
     seller <- getSeller(product1)
     price  <- getPrice(product1)
     res <- pay(seller, price).recover { case _: Exception =>
       createRecordError(seller, price)
     }
   } yield res
+
+  val res = scala.concurrent.Await
+          .result(result, scala.concurrent.duration.Duration.Inf)
+
+  println(res)
+
 }
 ```
 
@@ -153,6 +169,7 @@ Note:
 import cats.data.EitherT
 
 import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object FutureEither extends App {
   case class DepopProduct(id: Long) extends AnyVal
@@ -169,9 +186,11 @@ object FutureEither extends App {
   def getPrice(product: DepopProduct): Future[Either[String, Amount]] =
     Future.successful(Right(Amount(10)))
   def getShippingInfo(product: DepopProduct): Future[Option[ShippingInfo]] =
-    Future.successful(Some(ShippingInfo(Carrier("USPS"), Amount(5))))
+    Future.successful(None)
 
-  import scala.concurrent.ExecutionContext.Implicits.global
+  /*def getShippingInfo(product: DepopProduct): Future[Option[ShippingInfo]] =
+    Future.successful(Some(ShippingInfo(Carrier("USPS"), Amount(5))))*/
+
 
   val checkoutProduct: EitherT[Future, String, CheckoutProduct] = for {
     price <- EitherT(getPrice(product))
@@ -185,8 +204,8 @@ object FutureEither extends App {
           .result(checkoutProduct.value, scala.concurrent.duration.Duration.Inf)
 
   println(res)
-}
 
+}
 ```
 Note:
 - These data types from typelevel libraries can be really useful when dealing 
@@ -211,6 +230,7 @@ What happens when we want to deal with outside world?
 - Provides a nice way to deal with effects
 - Encapsulates an action that will happen later
 - Allow to compose different actions safely
+- Allow to decide when run those actions
 ---
 ## IO Example
 
@@ -297,7 +317,6 @@ Alessandro, Alberto, John F, Luis, Hersiv, Aida, Russell, Joe, Chloe, Jacob,![Al
 Note:
 - Alessandro is the responsible for almost 75% of all my knowdledge related with FP and really doing stuff with that. I'm really thankful to you for that.
 - But without the help of alberto this would be really difficult
-- John F, Luis, Hersiv, Russell, Joe, Chloe & Umar from Sellers and Ads team
 
 
 

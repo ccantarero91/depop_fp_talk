@@ -18,7 +18,10 @@ object FutureEither extends App {
   def getPrice(product: DepopProduct): Future[Either[String, Amount]] =
     Future.successful(Right(Amount(10)))
   def getShippingInfo(product: DepopProduct): Future[Option[ShippingInfo]] =
-    Future.successful(Some(ShippingInfo(Carrier("USPS"), Amount(5))))
+    Future.successful(None)
+
+  /*def getShippingInfo(product: DepopProduct): Future[Option[ShippingInfo]] =
+    Future.successful(Some(ShippingInfo(Carrier("USPS"), Amount(5))))*/
 
 
   val checkoutProduct: EitherT[Future, String, CheckoutProduct] = for {
