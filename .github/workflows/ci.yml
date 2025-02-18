@@ -15,8 +15,8 @@ jobs:
 
       - uses: actions/setup-java@v4
         with:
-          java-version: 21
-          distribution: temurin
+          java-version: 11
+          distribution: adopt
           cache: sbt
       - uses: sbt/setup-sbt@v1
       - name: Run SBT task
