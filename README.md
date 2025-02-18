@@ -1,13 +1,13 @@
-# Testing basado en propiedades
+# Depop Functional Programming talk
 
-Repositorio de acompañamiento para mi charla sobre testing basado en propiedades. Contiene dos módulos:
+Repository to accompany my talk on Functional Programming. It contains two modules:
 
-* Módulo con las slides, escritas en markdown, con código Scala ejecutado usando [`mdoc`](https://scalameta.org/mdoc/), y presentado usando [`reveal`](https://revealjs.com/)
-* Módulo con el código para live coding y potencialmente para los ejemplos utilizados en las slides
+* Module with slides, written in markdown, with Scala code executed using [`mdoc`](https://scalameta.org/mdoc/), and presented using [`reveal`](https://revealjs.com/)
+* Module with code for live coding and potentially for the examples used in the slides
 
-## Compilar slides
+## Compile slides
 
-1. Descargar [`sbt`](https://www.scala-sbt.org/)
-2. Ejecutar `sbt mdoc`
-3. Servir el contenido del directorio `modules/talk/target/mdoc`, en concreto el fichero `index.html`
-    * Habitualmente utilizo [`livereload`](https://github.com/lepture/python-livereload)
+1. Download [`sbt`](https://www.scala-sbt.org/)
+2. Run `sbt mdoc`
+3. Serve the content from the `modules/talk/target/mdoc` directory, specifically the `index.html` file.
+    * I usually use [`livereload`](https://github.com/lepture/python-livereload)
